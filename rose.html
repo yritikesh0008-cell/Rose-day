@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day Khushbu 🌹</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff0844, #ffb199);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.95);
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 360px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: pop 1s ease;
+  z-index: 2;
+}
+
+h1 {
+  color: #e60026;
+}
+
+.rose {
+  font-size: 65px;
+  animation: float 2s infinite ease-in-out;
+}
+
+p {
+  color: #444;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: #e60026;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff0844;
+}
+
+.footer {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  color: red;
+  animation: rise 6s linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* Rose petals */
+.petal {
+  position: absolute;
+  top: -30px;
+  font-size: 20px;
+  animation: fall 7s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.popup-box {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  animation: pop 0.8s ease;
+}
+</style>
+</head>
+
+<body onclick="clickHeart(event)">
+
+<!-- Music -->
+<audio autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Happy Rose Day 🌹</h1>
+  <div class="rose">🌹</div>
+
+  <p>
+    Dear <b>Khushbu</b> 💖<br><br>
+    This rose is for you 🌹<br>
+    You make my world brighter<br>
+    with your smile ✨
+  </p>
+
+  <button onclick="showLove()">A Special Message 💌</button>
+
+  <div class="footer">– From Ritikesh</div>
+</div>
+
+<!-- Love Popup -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h2>💖 I Love You Khushbu 💖</h2>
+    <p>Will you be mine forever? 💍</p>
+    <button onclick="closePopup()">Yes 💕</button>
+  </div>
+</div>
+
+<script>
+// Floating hearts
+setInterval(() => {
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = (15 + Math.random()*20) + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}, 400);
+
+// Rose petals rain
+setInterval(() => {
+  let p = document.createElement("div");
+  p.className = "petal";
+  p.innerHTML = "🌸";
+  p.style.left = Math.random()*100 + "vw";
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 7000);
+}, 600);
+
+// Click heart
+function clickHeart(e) {
+  let h = document.createElement("div");
+  h.innerHTML = "💖";
+  h.style.position = "absolute";
+  h.style.left = e.clientX + "px";
+  h.style.top = e.clientY + "px";
+  h.style.fontSize = "30px";
+  h.style.animation = "pop 0.8s ease";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 800);
+}
+
+// Popup
+function showLove() {
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
